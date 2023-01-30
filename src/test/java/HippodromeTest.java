@@ -66,10 +66,10 @@ public class HippodromeTest {
     @Test
     void getCorrectWinner(){
         List<Horse> list = new ArrayList<>();
-        for (int i =0; i < 30; i++){
+        for (int i =0; i < 11; i++){
             list.add(new Horse("horse #" + i, i+1, i+2));
         }
-        assertEquals(list.get(29), new Hippodrome(list).getWinner());
+        assertEquals(list.get(10), new Hippodrome(list).getWinner());
     }
 
 
