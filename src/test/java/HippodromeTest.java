@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.provider.NullSource;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,4 +48,29 @@ public class HippodromeTest {
         }
         assertArrayEquals(list.toArray(), new Hippodrome(list).getHorses().toArray());
     }
+
+    //2.c
+    @Test
+    void hippodromeMovesHorses(){
+        List<Horse> mockedList = new ArrayList<>();
+        for (int i =0; i < 50; i++){
+            mockedList.add(Mockito.mock(Horse.class));
+        }
+        Hippodrome hippodrome = new Hippodrome(mockedList);
+        hippodrome.move();
+        for(Horse horse: hippodrome.getHorses()){
+            Mockito.verify(horse).move();
+        }
+    }
+
+    @Test
+    void getCorrectWinner(){
+        List<Horse> list = new ArrayList<>();
+        for (int i =0; i < 30; i++){
+            list.add(new Horse("horse #" + i, i+1, i+2));
+        }
+        assertEquals(list.get(29), new Hippodrome(list).getWinner());
+    }
+
+
 }
