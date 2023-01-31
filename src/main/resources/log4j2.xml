@@ -6,7 +6,7 @@
     <Appenders>
         <RollingFile name="RollingFile" fileName="${baseDir}/hippodrome.log"
                      filePattern="${baseDir}/hippodrome.%d{yyyy-MM-dd}.log">
-            <PatternLayout pattern="%d %p %c{1.}: %m%n"/>
+            <PatternLayout pattern="%d %-5p %c{1.}: %m%n"/>
             <TimeBasedTriggeringPolicy interval="1"/>
             <DefaultRolloverStrategy>
                 <Delete basePath="${baseDir}" maxDepth="2">
