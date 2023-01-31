@@ -29,7 +29,6 @@ public class HorseTest {
                     new Horse(null, horseSpeed));
                 //Check the message if name is null
                 assertEquals("Name cannot be null.", exception.getMessage());
-        //System.out.println(exception.getMessage());
     }
 
     //Check for empty strings and only-spaces name

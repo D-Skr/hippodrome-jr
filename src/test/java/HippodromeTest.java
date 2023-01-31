@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class HippodromeTest {
 
@@ -23,7 +25,6 @@ public class HippodromeTest {
                         new Hippodrome(null));
         //Check the message if list is null
         assertEquals("Horses cannot be null.", exception.getMessage());
-        //System.out.println(exception.getMessage());
     }
 
     @Test
@@ -36,7 +37,6 @@ public class HippodromeTest {
                         new Hippodrome(horses));
         //Check the message if list is null
         assertEquals("Horses cannot be empty.", exception.getMessage());
-        //System.out.println(exception.getMessage());
     }
 
     //2.b
@@ -54,13 +54,11 @@ public class HippodromeTest {
     void hippodromeMovesHorses(){
         List<Horse> mockedList = new ArrayList<>();
         for (int i =0; i < 50; i++){
-            mockedList.add(Mockito.mock(Horse.class));
+            mockedList.add(mock(Horse.class));
         }
         Hippodrome hippodrome = new Hippodrome(mockedList);
         hippodrome.move();
-        for(Horse horse: hippodrome.getHorses()){
-            Mockito.verify(horse).move();
-        }
+        mockedList.forEach(horse -> verify(horse).move());
     }
 
     @Test
